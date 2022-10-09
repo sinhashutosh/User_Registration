@@ -1,13 +1,12 @@
 package org.example;
-
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String regix = "^[A-Z]{1}[a-z]{2,}";
+       Scanner sc = new Scanner(System.in);
+        /* String regix = "^[A-Z]{1}[a-z]{2,}";
         System.out.println("Enter First Name...");
         String fName = sc.next();
         Pattern fpattern = Pattern.compile(regix);
@@ -30,8 +29,8 @@ public class UserRegistration {
             return;
         }
         System.out.println("*********************************");
-        String Eregix = "^[a-zA-Z0-9[_.+-]?]+@[a-zA-Z0-9]+\\.+[a-zA-Z0-9]+(\\.+[a-zA-Z]{2})?";
-        Pattern Epattern = Pattern.compile(Eregix);
+        String eRegix = "^[a-zA-Z0-9[_.+-]?]+@[a-zA-Z0-9]+\\.+[a-zA-Z0-9]+(\\.+[a-zA-Z]{2})?";
+        Pattern Epattern = Pattern.compile(eRegix);
         System.out.println("Enter your Email ID...");
         String email = sc.next();
         Matcher Ematcher = Epattern.matcher(email);
@@ -40,6 +39,17 @@ public class UserRegistration {
         } else {
             System.out.println("Your Entered Worng Email Address...");
             return;
-        }
+        }*/
+        System.out.println("*********************************");
+        String mRegix = "^(0|\\+91|91)?[6-9]{1}[0-9]{9}";
+      Pattern mPattern = Pattern.compile(mRegix);
+      System.out.println("Enter Your Mobile Number...");
+      String mNum = sc.next();
+      Matcher mMatcher = mPattern.matcher(mNum);
+      if (mMatcher.matches()) {
+          System.out.println("Mobile Number accepted...");
+      } else {
+          System.out.println("Invalid Mobile Number...");
+      }
     }
 }
