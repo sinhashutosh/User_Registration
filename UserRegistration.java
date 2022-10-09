@@ -53,8 +53,7 @@ public class UserRegistration {
           System.out.println("Invalid Mobile Number...");
       }*/
         System.out.println("*********************************");
-       // String pRegix = "[a-zA-Z0-9]{8,}(?=[A-Z]+)";
-        String pRegix = "^(?=.*[A-Z]).{8,}";
+        String pRegix = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}";
         Pattern pattern = Pattern.compile(pRegix);
         System.out.println("Enter password...");
         String pswd = sc.next();
