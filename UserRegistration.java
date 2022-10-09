@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class UserRegistration {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        /* String regix = "^[A-Z]{1}[a-z]{2,}";
+        String regix = "^[A-Z]{1}[a-z]{2,}";
         System.out.println("Enter First Name...");
         String fName = sc.next();
         Pattern fpattern = Pattern.compile(regix);
@@ -43,22 +43,23 @@ public class UserRegistration {
         }
         System.out.println("*********************************");
         String mRegix = "^(0|\\+91|91)?[6-9]{1}[0-9]{9}";
-      Pattern mPattern = Pattern.compile(mRegix);
-      System.out.println("Enter Your Mobile Number...");
-      String mNum = sc.next();
-      Matcher mMatcher = mPattern.matcher(mNum);
-      if (mMatcher.matches()) {
-          System.out.println("Mobile Number accepted...");
-      } else {
-          System.out.println("Invalid Mobile Number...");
-      }*/
+        Pattern mPattern = Pattern.compile(mRegix);
+        System.out.println("Enter Your Mobile Number...");
+        String mNum = sc.next();
+        Matcher mMatcher = mPattern.matcher(mNum);
+        if (mMatcher.matches()) {
+            System.out.println("Mobile Number accepted...");
+        } else {
+            System.out.println("Invalid Mobile Number...");
+            return;
+        }
         System.out.println("*********************************");
         String pRegix = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\\W).{8,}";
-        Pattern pattern = Pattern.compile(pRegix);
+        Pattern ppattern = Pattern.compile(pRegix);
         System.out.println("Enter password...");
         String pswd = sc.next();
-        Matcher matcher = pattern.matcher(pswd);
-        if (matcher.matches())  {
+        Matcher pmatcher = ppattern.matcher(pswd);
+        if (pmatcher.matches()) {
             System.out.println("Password Accepted...");
         } else {
             System.out.println("Invalid Type...");
