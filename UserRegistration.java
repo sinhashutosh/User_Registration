@@ -1,11 +1,12 @@
 package org.example;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
     public static void main(String[] args) {
-       Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         /* String regix = "^[A-Z]{1}[a-z]{2,}";
         System.out.println("Enter First Name...");
         String fName = sc.next();
@@ -39,7 +40,7 @@ public class UserRegistration {
         } else {
             System.out.println("Your Entered Worng Email Address...");
             return;
-        }*/
+        }
         System.out.println("*********************************");
         String mRegix = "^(0|\\+91|91)?[6-9]{1}[0-9]{9}";
       Pattern mPattern = Pattern.compile(mRegix);
@@ -50,6 +51,17 @@ public class UserRegistration {
           System.out.println("Mobile Number accepted...");
       } else {
           System.out.println("Invalid Mobile Number...");
-      }
+      }*/
+        System.out.println("*********************************");
+        String pRegix = "[a-zA-Z0-9]{8,}";
+        Pattern pattern = Pattern.compile(pRegix);
+        System.out.println("Enter password...");
+        String pswd = sc.next();
+        Matcher matcher = pattern.matcher(pswd);
+        if (matcher.matches())  {
+            System.out.println("Password Accepted...");
+        } else {
+            System.out.println("Invalid Type...");
+        }
     }
 }
