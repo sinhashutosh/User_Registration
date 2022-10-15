@@ -4,10 +4,10 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistration {
+public class UserRegistration extends Exception {
     static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UserRegistrationException {
         System.out.println("Enter First Name...");
         String fName = sc.next();
         boolean result1 = validateFirstName(fName);
@@ -34,38 +34,82 @@ public class UserRegistration {
         System.out.println("First Name = " + result5);
     }
 
-    static boolean validateFirstName(String FirstName) {
-        String regix = "^[A-Z]{1}[a-z]{2,}";
-        Pattern fpattern = Pattern.compile(regix);
-        Matcher fmatcher = fpattern.matcher(FirstName);
-        return fmatcher.matches();
-    }
-
-    static boolean validateLastName(String lastName) {
-        String regix = "^[A-Z]{1}[a-z]{2,}";
-        Pattern lpattern = Pattern.compile(regix);
-        Matcher lmatcher = lpattern.matcher(lastName);
-        return lmatcher.matches();
-    }
-
-    static boolean validateemailId(String emailId) {
-        String eRegix = "^[a-zA-Z0-9[_.+-]?]+@[a-zA-Z0-9]+\\.+[a-zA-Z0-9]+(\\.+[a-zA-Z]{2})?";
-        Pattern Epattern = Pattern.compile(eRegix);
-        Matcher Ematcher = Epattern.matcher(emailId);
-        return Ematcher.matches();
+    static boolean validateFirstName(String FirstName) throws UserRegistrationException {
+        try {
+            String regix = "^[A-Z]{1}[a-z]{2,}";
+            Pattern fpattern = Pattern.compile(regix);
+            Matcher fmatcher = fpattern.matcher(FirstName);
+            if (fmatcher.matches()) {
+                return true;
+            } else {
+                throw new UserRegistrationException();
+            }
+        } catch (UserRegistrationException e) {
+            System.out.println("You Entered Inavlid First Name ");
+            return false;
         }
+    }
 
-        static boolean validateMobileNumber (String mobileNumber){
+    static boolean validateLastName(String lastName) throws UserRegistrationException {
+        String regix = "^[A-Z]{1}[a-z]{2,}";
+        try {
+            Pattern lpattern = Pattern.compile(regix);
+            Matcher lmatcher = lpattern.matcher(lastName);
+            if (lmatcher.matches()) {
+                return true;
+            } else {
+                throw new UserRegistrationException();
+            }
+        } catch (UserRegistrationException e) {
+            System.out.println("You Entered Inavlid First Name ");
+            return false;
+        }
+    }
+
+    static boolean validateemailId(String emailId) throws UserRegistrationException {
+        String eRegix = "^[a-zA-Z0-9[_.+-]?]+@[a-zA-Z0-9]+\\.+[a-zA-Z0-9]+(\\.+[a-zA-Z]{2})?";
+        try {
+            Pattern Epattern = Pattern.compile(eRegix);
+            Matcher Ematcher = Epattern.matcher(emailId);
+            if (Ematcher.matches()) {
+                return true;
+            } else {
+                throw new UserRegistrationException();
+            }
+        } catch (UserRegistrationException e) {
+            System.out.println("You Entered Inavlid Last Name ");
+            return false;
+        }
+    }
+        static boolean validateMobileNumber (String mobileNumber) throws UserRegistrationException {
             String mRegix = "^(0|\\+91|91)(\\s)?[6-9]{1}[0-9]{9}";
+            try {
             Pattern mPattern = Pattern.compile(mRegix);
             Matcher mMatcher = mPattern.matcher(mobileNumber);
-            return mMatcher.matches();
+                if (mMatcher.matches()) {
+                    return true;
+                } else {
+                    throw new UserRegistrationException();
+                }
+            } catch (UserRegistrationException e) {
+                System.out.println("You Entered Inavlid Mobile Number ");
+                return false;
+            }
         }
 
-        static boolean validatePassword (String password){
+        static boolean validatePassword (String password) throws UserRegistrationException {
             String pRegix = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\\W).{8,}";
+           try {
             Pattern ppattern = Pattern.compile(pRegix);
             Matcher pmatcher = ppattern.matcher(password);
-            return pmatcher.matches();
+               if (pmatcher.matches()) {
+                   return true;
+               } else {
+                   throw new UserRegistrationException();
+               }
+           } catch (UserRegistrationException e) {
+               System.out.println("You Entered Inavlid  Password ");
+               return false;
+           }
         }
     }
